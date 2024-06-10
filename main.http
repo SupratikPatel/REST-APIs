@@ -1,0 +1,30 @@
+###check
+
+GET http://localhost:8080/blog-entries
+Accept: application/json
+
+
+### Create new
+POST http://localhost:8080/blog-entries
+Content-Type: application/json
+
+{
+  "creationDate": "2024-04-25",
+  "headline": "My 4th Blog Post",
+  "text": "hello for the fourth time!"
+}
+
+
+### update existing
+PUT http://localhost:8080/blog-entries/3
+Content-Type: application/json
+
+{
+  "id": 3,
+  "creationDate": "2024-04-26",
+  "headline": "Updated Blog Post",
+  "text": "this is the updated text."
+}
+
+### Delete
+DELETE http://localhost:8080/blog-entries/2

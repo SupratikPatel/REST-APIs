@@ -1,0 +1,199 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "_SuperUser_",
+
+    "description": "With SuperUser you can learn about GO",
+    "version": "v2",
+    "contact": {
+      "name": "example@tum.de"
+    }
+  },
+  "servers": [
+    {
+      "url": "http://localhost:8080",
+      "description": "Development server"
+    }
+  ],
+  "paths": {
+    "/blog-entries": {
+      "get": {
+        "summary": "Get all Blog-Entry",
+        "description": "Get all existing Blog-Entries",
+        "operationId": "get-all-blog-entries",
+        "responses": {
+          "200": {
+            "description": "Blog entries found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogEntry"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No entries found"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "tags": [
+          "blog"
+        ]
+      },
+      "post": {
+        "summary": "Create new Blog-Entry",
+        "description": "Get new Blog-Entry",
+        "operationId": "create-new-blog-entry",
+        "tags": [
+          "blog"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlogEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "201": {
+            "description": "Blog entry successfully created"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    },
+    "/blog-entries/{id}": {
+      "get": {
+        "summary": "Get one Blog-Entry",
+        "description": "Get one Blog-Entry",
+        "operationId": "get-one-blog-entry",
+        "parameters": [
+          {"$ref": "#/components/parameters/id"}
+        ],
+        "responses": {
+          "200": {
+            "description": "200 response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/BlogEntry"
+                  }
+                }
+              }
+            }
+          },
+          "204": {
+            "description": "No entry with given ID found"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        },
+        "tags": [
+          "blog"
+        ]
+      },
+      "put": {
+        "summary": "Update existing Blog-Entry",
+        "description": "Update existing Blog-Entry",
+        "operationId": "update-existing-blog-entry",
+        "tags": [
+          "blog"
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BlogEntry"
+              }
+            }
+          }
+        },
+        "responses": {
+          "204": {
+            "description": "Blog entry successfully updated"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      },
+      "delete": {
+        "summary": "Delete existing Blog-Entry",
+        "description": "Delete existing Blog-Entry",
+        "operationId": "delete-existing-blog-entry",
+        "tags": [
+          "blog"
+        ],
+        "parameters": [
+          {"$ref": "#/components/parameters/id"}
+        ],
+        "responses": {
+          "204": {
+            "description": "Blog entry successfully deleted"
+          },
+          "400": {
+            "description": "Bad request"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BlogEntry": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "example": "id"
+          },
+          "creationDate": {
+            "type": "string",
+            "example": "2024-04-25"
+          },
+          "headline": {
+            "type": "string",
+            "example": "My cool Blog Headline"
+          },
+          "text": {
+            "type": "string",
+            "example": "Lorem ipsum dolor sit amet, consetetur sadipscing"
+          }
+        },
+        "example": {
+          "id": "id",
+          "creationDate": "2024-04-25",
+          "headline": "My cool Blog Headline",
+          "text": "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet."
+        }
+      }
+    },
+    "parameters" : {
+      "id": {
+        "in": "path",
+        "name": "id",
+        "required": true,
+        "schema": {
+          "type": "string"
+        },
+        "description": "The ID of the Blog-Entry",
+        "example": "1"
+      }
+    }
+  }
+}
