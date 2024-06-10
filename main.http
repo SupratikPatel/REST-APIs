@@ -5,7 +5,7 @@ Accept: application/json
 
 
 ### Create new
-POST http://localhost:8080/blog-entries
+POST  http://localhost:8080/blog-entries
 Content-Type: application/json
 
 {

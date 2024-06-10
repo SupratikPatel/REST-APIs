@@ -6,7 +6,7 @@
     "description": "With SuperUser you can learn about GO",
     "version": "v2",
     "contact": {
-      "name": "example@tum.de"
+      "name":  "example@tum.de"
     }
   },
   "servers": [
